@@ -32,7 +32,7 @@ for (let i = 1; i <= 25; i++) {
     var unitsProduced = systemSizeRequired * this.MONTHLY_SOLAR_GENERATION_PER_KW * 12 * (1-this.ANNUAL_DEGRADATION_PERCENTAGE*(i-1)) ;
     // console.log('Units produced : ' + unitsProduced );
 
-    var tariff = this.TARIFF_PER_KW * (1+ this.TARIFF_ESCALATION_PERCENTAGE_PER_ANNUM)^(i-1)
+    var tariff = this.TARIFF_PER_KW * Math.pow(1+ this.TARIFF_ESCALATION_PERCENTAGE_PER_ANNUM,i-1)
     // console.log('Tariff: ' + tariff );
 
     var savings = unitsProduced * tariff;
@@ -41,9 +41,9 @@ for (let i = 1; i <= 25; i++) {
     tmp = {
             year : i,
             systemSize : systemSizeRequired,
-            unitsProduced : unitsProduced,
-            tariff : tariff,
-            savings : savings
+            unitsProduced : unitsProduced.toFixed(2),
+            tariff : tariff.toFixed(2),
+            savings : savings.toFixed(2)
     };
 
     output.push(tmp);

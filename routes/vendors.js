@@ -6,10 +6,13 @@ var vendorData = require('../dao/vendorDAO.js');
  
 
 router.get('/vendorData', (req,res, next) => {
-    let pinCode = req.query.pincode;
-    console.log("PinCode : "  + pinCode);
-    var data = vendorData.getVendorData(pinCode);
-    res.status(200).header("Access-Control-Allow-Origin", "*").send(data);
+    let postCode = req.query.pincode;
+    console.log("PinCode : "  + postCode);
+    var vendorInfo ;
+    vendorData.getVendorData(postCode).then(function(data){
+        res.status(200).header("Access-Control-Allow-Origin", "*").send(data);   
+    }).catch((err) => setImmediate(()=>{throw err;}));
+    
 });
 
 module.exports = router;

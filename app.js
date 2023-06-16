@@ -2,8 +2,16 @@ const express= require('express');
 const app = express();
 
 
+app.use('/', express.static('dist/solar-calculator-app'));
+app.use('/home', express.static('dist/solar-calculator-app'));
+app.use('/inputData', express.static('dist/solar-calculator-app'));
+app.use('/calculate', express.static('dist/solar-calculator-app'));
+app.use('/savingss', express.static('dist/solar-calculator-app'));
+app.use('/vendorsdata', express.static('dist/solar-calculator-app'));
+app.use('/solarblog', express.static('dist/solar-calculator-app'));
+app.use('/contactus', express.static('dist/solar-calculator-app'));
 
-
+console.log('Solar app added');
 
 // const CONSTANTS = require('constants1.js');
 const tariffRoutes = require('./routes/tariffs');
